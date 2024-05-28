@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int num1, num2, num3;
+
+    cout << "Enter three numbers: ";
+    cin >> num1 >> num2 >> num3;
+
+    int maxNum = num1; // Assuming num1 is the largest initially
+
+    if (num2 > maxNum) {
+        maxNum = num2; // Update maxNum if num2 is greater
+    }
+
+    if (num3 > maxNum) {
+        maxNum = num3; // Update maxNum if num3 is greater
+    }
+
+    cout << "The largest number is: " << maxNum << endl;
+
+    return 0;
+}
