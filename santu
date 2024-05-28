@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Color Game</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+    #color-box {
+        width: 200px;
+        height: 200px;
+        margin: 50px auto;
+        border: 2px solid black;
+    }
+</style>
+</head>
+<body>
+<h1>Color Game</h1>
+<p>Guess the color based on its hexadecimal code!</p>
+<div id="color-box"></div>
+<input type="text" id="color-input" placeholder="Enter color code">
+<button onclick="checkColor()">Check</button>
+<p id="result"></p>
+
+<script>
+    // Function to generate a random color
+    function randomColor() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+
+    // Function to set a new random color
+    function setRandomColor() {
+        var colorBox = document.getElementById('color-box');
+        colorBox.style.backgroundColor = randomColor();
+    }
+
+    // Function to check if the guessed color is correct
+    function checkColor() {
+        var colorBox = document.getElementById('color-box');
+        var guessedColor = document.getElementById('color-input').value.toUpperCase();
+        var actualColor = colorBox.style.backgroundColor.toUpperCase();
+        
+        if (guessedColor === actualColor) {
+            document.getElementById('result').textContent = "Correct! You guessed the color.";
+        } else {
+            document.getElementById('result').textContent = "Incorrect! Try again.";
+        }
+    }
+
+    // Set initial color when the page loads
+    setRandomColor();
+</script>
+</body>
+</html>
+
